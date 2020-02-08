@@ -102,3 +102,34 @@ h2 { font-size: 4rem; line-height: 1.2;}
     }
 }
 
+/** LISTA **/
+
+.lista {
+	border: 1px solid #707070;
+	margin-bottom: 2px;
+	height: auto;
+	border-radius: 5px;
+	padding: 0px 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items:center;
+}
+
+
+
+.casilla{
+	border-radius: 5px;
+	padding: 0px 10px;
+	margin: 5px 0px;
+	
+}
+
+
+.rojo {
+	background: #E20505;
+}
+
+.verde {
+	background: #05E215;
+}
+

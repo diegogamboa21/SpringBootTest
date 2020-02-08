@@ -5,7 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Historial</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
-<script type="text/javascript" th:href="@{/js/jquery-1.12.0.min.js}"></script>
+
+<!--  
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.12.0.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$('checkboxall').click(function(){
+			if((this).is(":checked"))
+				$('.checid').prop('checked', true)
+			else
+				$('.checid').prop('checked', false	)
+		})
+	})
+</script> 
+-->
+
 </head>
 <body>
 	<main class="contenedor">
@@ -16,19 +31,15 @@
             	<div th:if="${usuarios.isEmpty()}">No hay usuarios registrados</div>
             	
             	<form th:action="users" method="POST">
-	            	<div th:if="${!usuarios.isEmpty()}" th:each="usuario : ${usuarios}">
+	            	<div class="lista" th:if="${!usuarios.isEmpty()}" th:each="usuario : ${usuarios}">
+	         			<div>
+	            			<input th:if="${!usuario.procesado}" type="checkbox" name="usersId[]" th:value="${usuario.idUsuario}" th:id="${usuario.idUsuario}" >
+	            			<input th:if="${usuario.procesado}" type="checkbox" disabled>
+	            			<span th:text="${usuario.nombre +' '+ usuario.apellido}"></span>
+	            		</div>
+            			<span class="rojo casilla" th:if="${!usuario.procesado}">Sin Procesar</span>
+            			<span class="verde casilla" th:if="${usuario.procesado}">Procesado</span>
 	            		
-	            		<label th:if="${!usuario.procesado}" class="inactivo">
-	            			<input type="checkbox" name="usersId" th:value="${usuario.idUsuario}" th:id="${usuario.idUsuario}" >
-	            			<span th:text="${usuario.nombre +' '+ usuario.apellido}"></span>
-	            			<span>Sin Procesar</span>
-	            		</label>
-	            		<label th:if="${usuario.procesado}" class="activo">
-	            			<input type="checkbox" name="usersId" th:value="${usuario.idUsuario}" th:id="${usuario.idUsuario}" disabled>
-	            			<span th:text="${usuario.idUsuario}"></span>
-	            			<span th:text="${usuario.nombre +' '+ usuario.apellido}"></span>
-	            			<span>Procesado</span>
-	            		</label>
 	            	</div>
 	            	
 	            	<div class="campo enviar">
