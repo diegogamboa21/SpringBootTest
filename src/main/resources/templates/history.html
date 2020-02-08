@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historial</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+<script type="text/javascript" th:href="@{/js/jquery-1.12.0.min.js}"></script>
+</head>
+<body>
+	<main class="contenedor">
+        <div class="grid centrar-columnas">
+            <div class="columna-10 formulario-contacto">
+            	<h2 class="centrar-texto">Historial</h2>
+            	
+            	<div th:if="${usuarios.isEmpty()}">No hay usuarios registrados</div>
+            	
+            	<form th:action="users" method="POST">
+	            	<div th:if="${!usuarios.isEmpty()}" th:each="usuario : ${usuarios}">
+	            		
+	            		<label th:if="${!usuario.procesado}" class="inactivo">
+	            			<input type="checkbox" name="usersId" th:value="${usuario.idUsuario}" th:id="${usuario.idUsuario}" >
+	            			<span th:text="${usuario.nombre +' '+ usuario.apellido}"></span>
+	            			<span>Sin Procesar</span>
+	            		</label>
+	            		<label th:if="${usuario.procesado}" class="activo">
+	            			<input type="checkbox" name="usersId" th:value="${usuario.idUsuario}" th:id="${usuario.idUsuario}" disabled>
+	            			<span th:text="${usuario.idUsuario}"></span>
+	            			<span th:text="${usuario.nombre +' '+ usuario.apellido}"></span>
+	            			<span>Procesado</span>
+	            		</label>
+	            	</div>
+	            	
+	            	<div class="campo enviar">
+	                    <input type="submit" value="Procesar" class="btn">
+	                </div>
+	            </form>
+                
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de registro</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"></link>
+</head>
+<body>
+	<main class="contenedor">
+        <div class="grid centrar-columnas">
+            <div class="columna-10 formulario-contacto">
+            <h2 class="centrar-texto">Registro</h2>
+                <form action="basicForm" method="POST">
+                	<div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="nombre" placeholder="Tu Nombre">
+                    </div>
+                	<div class="campo">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" name="apellido" id="apellido" placeholder="Tu Apellido">
+                    </div>                    
+                    <div class="campo enviar">
+                        <input type="submit" value="Enviar" class="btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
