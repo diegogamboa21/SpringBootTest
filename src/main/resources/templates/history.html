@@ -21,11 +21,11 @@
 	            			<input th:if="${!usuario.procesado}" type="checkbox" name="usersId[]" th:value="${usuario.idUsuario}" th:id="${usuario.idUsuario}" >
 	            			<input th:if="${usuario.procesado}" type="checkbox" disabled>
 	            			<span th:text="${usuario.nombre +' '+ usuario.apellido}"></span>
-	            		
+	            		</div>
             			<span class="rojo casilla" th:if="${!usuario.procesado}">Sin Procesar</span>
             			<span class="verde casilla" th:if="${usuario.procesado}">Procesado</span>
 	            		
-	            	</div>
+            		</div>
 	            	
 	            	<div class="campo enviar">
 	                    <input type="submit" value="Procesar" class="btn">
